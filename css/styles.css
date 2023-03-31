@@ -7,6 +7,7 @@
   --accent-color: #e7e9fc;
   --logo-color-cloud: #f4f4fd;
   --color-icon-client: #8e8f99;
+  --time-animation: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* /* Кольорова гама */
 /* основний колір тексту - #434455 */
@@ -14,6 +15,7 @@
 /* колір лого - #4D5AE5 */
 /* колір панелі кнопок портфоліо - #404BBF */
 /* колір іконки клієнтів - #8e8f99 */
+/* функція розподілу часу cubic-bezier(0.4, 0, 0.2, 1) */
 body {
   font-family: "Roboto", sans-serif;
   color: var(--primary-text-color);
@@ -115,6 +117,8 @@ img {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--time-animation);
 }
 
 .nav-list a:hover,
@@ -152,6 +156,25 @@ img {
 .contacts a:hover,
 .contacts a:focus {
   color: var(--button-color-ocean);
+}
+/* -------------------------------Current page--------------------------------- */
+.activ {
+  position: relative;
+}
+
+.link.activ {
+  color: var(--button-color-ocean);
+}
+
+.activ::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--button-color-ocean);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
 }
 
 /* -------------------------------Hero--------------------------------- */
@@ -201,6 +224,8 @@ img {
   border: 1px solid transparent;
   border-radius: 4px;
   cursor: pointer;
+
+  transition: background-color 250ms var(--time-animation);
 }
 
 .hero-btn:hover,
@@ -302,6 +327,8 @@ img {
   height: 40px;
   background-color: var(--logo-color-iris);
   border-radius: 50%;
+
+  transition: background-color 250ms var(--time-animation);
 }
 
 .team-link:hover,
@@ -327,6 +354,9 @@ img {
   border-radius: 4px;
   width: 168px;
   height: 88px;
+
+  transition: color 250ms var(--time-animation),
+    border-color 250ms var(--time-animation);
 }
 
 .customers-icon {
@@ -382,7 +412,12 @@ img {
   border-radius: 4px;
   letter-spacing: 0.04em;
   color: var(--logo-color-iris);
+  background-color: var(--logo-color-cloud);
   cursor: pointer;
+
+  transition: background-color 250ms var(--time-animation),
+    color 250ms var(--time-animation), box-shadow 250ms var(--time-animation),
+    border 250ms var(--time-animation);
 }
 
 .btn-filter:hover,
@@ -404,6 +439,8 @@ img {
   flex-basis: calc(100% / 3 - 24px);
   margin-right: 24px;
   margin-bottom: 48px;
+
+  transition: box-shadow 250ms var(--time-animation);
 }
 
 .portfolio-card:hover {
@@ -430,6 +467,35 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
+}
+/* ---------------------------------Overlay--------------------------- */
+.overlay-pin {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms var(--time-animation);
+
+  padding: 40px 32px;
+  background-color: var(--logo-color-iris);
+}
+
+.link-card:hover .overlay,
+.link-card:focus .overlay {
+  transform: translateY(0);
+}
+
+.overlay-tex {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
 }
 
 /* ---------------------------------Footer--------------------------- */
@@ -481,8 +547,10 @@ img {
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--logo-color-iris);
   border-radius: 50%;
+
+  transition: background-color 250ms var(--time-animation);
 }
 
 .footer-media-link:hover,
